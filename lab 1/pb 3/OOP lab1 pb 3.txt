@@ -1,0 +1,32 @@
+#include <iostream>
+#include <stdio.h>
+#include <string.h>
+using namespace std;
+
+int n,i;
+char v[20][50], *p;
+char s[256];
+
+int main()
+{
+    scanf("%[^\t\n]", s);
+
+    p=strtok(s, " ");
+    while(p)
+    {
+        n++;
+        strcpy(v[n], p);
+        p=strtok(NULL, " ");
+    }
+
+    for(i=1; i<n; i++)
+        for(int j=i+1; j<=n; j++)
+            if(strlen(v[i]) < strlen(v[j]))
+                swap(v[i], v[j]);
+
+
+    for(i=1; i<n; i++)
+        cout<<v[i]<<endl;
+
+    return 0;
+}
